@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getRandom(min,max) {
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        alert("来猜猜数字，范围为1到100"); 
+        var num=getRandom(1,100);
+        while(true) {
+            var guess=prompt("请输入猜测的数字：");
+            if (guess>num) {
+                alert("你猜大了");
+            }else if (guess<num) {
+                alert("你猜小了");
+            }else {
+                alert("NB！！");
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

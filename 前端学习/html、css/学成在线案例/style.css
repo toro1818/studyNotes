@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 3000px;
+    background-color: #f3f5f7;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+/* 清除浮动代码 */
+.clearfix:before,.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom:1;
+}
+
+.w {
+    width: 1200px;
+    margin:auto;
+}
+
+/* header部分 */
+
+.header {
+    height: 42px;
+    /* background-color: pink; */
+    /* 由于第一个div调用了w和header所以margin会覆盖，所以得把auto加上 */
+    margin: 30px auto;
+}
+.logo {
+    float: left;
+    width: 198px;
+    height: 42px;
+    /* background-color: purple; */
+}
+.nav {
+    float: left;
+    margin-left: 60px;
+}
+.nav ul li {
+    float: left;
+}
+/* 由于导航栏内文字不一样多，所以不指定宽度，而是使用padding撑开 */
+.nav ul li a {
+    display: block;
+    height: 42px;
+    padding: 0 18px;
+
+    line-height: 42px;  
+    font-size: 18px;
+    color:#050505;
+ 
+}
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+.search {
+    float: left;
+    width: 412px;
+    height: 42px;
+    /* background-color: skyblue; */
+    margin-left: 70px;
+}
+.search input {
+    float: left;
+    width: 360px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: 0px;
+}
+.search button {
+    float: left;
+    height: 42px;
+    width: 51px;
+    background: url(images/search_btn.png);
+    border: none;
+}
+.user {
+    float: right;
+    margin-right: 34px;
+    font-size: 14px;
+    color: #666666;
+}
+.user img {
+    /* 实现文字图片居中对齐 */
+    vertical-align: middle;
+}
+
+/* banner部分 */
+
+.banner {
+    height: 420px;
+    background-color: #1c036c;
+}
+.banner .w {
+    height: 420px;
+    background: url(images/banner2.png) no-repeat top center;
+}
+.subnav {
+    float: left;
+    height:420px;
+    width:190px;
+    background-color: rgba(0,0,0,0.3);
+}
+.subnav ul li {
+    height: 45px;
+    padding-left: 22px;
+    padding-right: 22px;
+    line-height: 45px;
+}
+
+.subnav ul li a {
+    font-size: 14px;
+    color: #ffffff;
+}
+.subnav ul li a span {
+    float: right;
+}
+.subnav ul li a:hover {
+    color: #00a4ff;
+}
+.course {
+    float: right;
+    width: 230px;
+    height: 300px;
+    margin: 50px 0 70px;
+    background-color:#ffffff;
+}
+.course h4 {
+    height: 48px;
+    background-color: #9bceea;
+    font-style: 18px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 48px;
+}
+.bd {
+    padding: 0 20px;
+}
+.bd ul li {
+    padding: 11px 0;
+    border-bottom: 1px solid #cccccc;   
+}
+.bd p {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+.bd span {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.more {
+    display: block;
+    height: 37px;
+    width: 200px;
+    background-color: #ffffff;
+    margin: 5px 16px;
+    border: 1px solid #00a4ff;
+    text-align: center;
+    line-height: 37px;
+    font-size: 16px;
+    color: #00a4ff;
+}
+
+/* goods部分 */
+
+.goods {
+    height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.1);
+}
+.goods h4 {
+    float: left;
+    padding: 21px 33px;
+    color: #00a4ff;
+    font-size: 16px;
+}
+.goods ul li a{
+    float: left;
+    height: 20px;
+    width: 123px;
+    margin: 21px 0;
+    border-left: 1px solid #cccccc;
+    text-align: center;
+    font: 16px;
+    color: #050505;
+    
+}
+.goods .modify {
+    float: right;
+    margin: 21px 26px;
+    font: 14px;
+    color: #00a4ff;
+}
+
+/* box1部分 */
+
+.box1 {
+    margin-top: 30px;
+}
+.box1-hd {
+    height: 44px;
+    /* background-color: pink; */
+}
+.box1-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+.box1-hd a {
+    float: right;
+    margin-top: 10px;
+    margin-right: 32px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.box1-bd ul {
+    width: 1215px;
+}
+.box1-bd ul li {
+    position: relative;
+    float: left;
+    width: 228px;
+    height: 270px;
+    background-color: #ffffff;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.box1-bd ul li > img {
+    width: 100%;
+}
+.box1-bd ul li em {
+    position: absolute;
+    top: 1px;
+    right: -7px;
+}
+.box1-bd ul li h4 {
+    padding: 25px 23px 18px 23px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #050505;
+}
+.box1-bd ul li p {
+    margin-left: 23px;
+    font-size: 12px;
+    color: #ff7c2d;
+}
+.box1-bd ul li p span {
+    color: #999999;
+}
+
+.footer{
+    height: 420px;
+    background-color: #fff;
+}
+.footer .w {
+    margin-top: 30px;
+    padding-top: 33px;
+}
+.copyright {
+    float: left;
+    margin-left: 20px;
+}
+.copyright p {
+    margin: 22px 0 17px 0;
+    font-size: 12px;
+    color: #666666;
+}
+.copyright a {
+    display: block;
+    width: 122px;
+    height: 36px;
+    border: 1px solid #edf1f3;
+    font-size: 16px;
+    color: #00a4ff;
+    line-height: 36px;
+    text-align: center;
+}
+.link {
+    float: right;
+}
+.link dl {
+    float: left;
+    margin-left: 140px;
+}
+.link dt {
+    margin-bottom: 17px;
+    font-size: 16px;
+    color: #333333;
+}
+.link dd a {
+    font-size: 12px;
+    color: #333333;
+}

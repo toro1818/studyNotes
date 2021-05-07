@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tab {
+            height: 250px;
+            width: 1300px;
+            /* background-color: pink; */
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            width: 100%;
+            height: 50px;
+            background-color: #eef1ee;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 50px;
+            padding: 15px 26px;
+            cursor: pointer;
+        }
+
+        .current {
+            height: 50px;
+            background-color: #d82821;
+            color: aliceblue;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_content">
+            <div class="item" style="display: block;">商品介绍模块</div>
+            <div class="item">规格与包装</div>
+            <div class="item">售后保障</div>
+            <div class="item">商品评价模块</div>
+            <div class="item">手机社区模块</div>
+        </div>
+    </div>
+    <script>
+        var tab_list = document.querySelector('.tab_list');
+        var list = tab_list.querySelectorAll('li');
+        var tab_content=document.getElementsByClassName('tab_content');
+        var items=tab_content[0].querySelectorAll('.item');
+        for (var i = 0; i < list.length; i++) {
+            list[i].setAttribute('index',i);
+            list[i].onclick = function () {
+                for (var j = 0; j < list.length; j++) {
+                    list[j].className = '';
+                    items[j].style.display='none';
+                }
+                this.className = 'current';
+                var index=this.getAttribute('index');
+                items[index].style.display='block';
+            }
+        }
+    </script>
+</body>
+
+</html>

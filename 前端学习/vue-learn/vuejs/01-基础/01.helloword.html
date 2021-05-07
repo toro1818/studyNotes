@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+    <link rel="stylesheet" href="01.css">
+</head>
+
+<body>
+    <div id="app1">
+        {{message}}
+    </div>
+    <!-- 双向绑定 v-model -->
+    <div id="app2">
+        <h4>Your name is {{name}}</h4>
+        <input type="text" v-model='name'>
+    </div>
+    <hr>
+
+    <!-- 列表迭代 v-for -->
+    <div id="v-for">
+        <ul>
+            <!-- 1.遍历数字列表 -->
+            <li v-for='n in 3'>{{n}}</li>
+
+            <!-- 2.遍历数组列表 -->
+            <!-- 可以使用v-for支持的第二个可选参数来获取当前项目的索引，-->
+            <!-- v-for="(item, index) in items"  -->
+            <li v-for='(n,index) in fruits'>{{index}}--{{n}}</li>
+
+            <!-- 3.遍历对象属性 -->
+            <!-- 要遍历对象的属性，v-for指令具有以下顺序 -->
+            <!-- v-for="(value, key, index) -->
+            <li v-for='(v,k,i) in object'>{{i}}. {{k}}: {{v}}</li>
+        </ul>
+
+    </div>
+    <hr>
+
+    <!-- 条件 v-if v-show -->
+    <!-- 
+        区别:
+        v-show：昂贵的初始负载，廉价的切换，(display:none隐藏)
+        v-if：廉价的初始负载，昂贵的切换。 (不出现在dom树中)
+    -->
+    <div id="v-if">
+        <div v-if="count>10">
+            count is greater then 10.
+        </div>
+        <div v-else-if='count==10'>
+            count equals to 10.
+        </div>
+        <div v-else>
+            count is less then 10.
+        </div>
+
+        <div v-show="count>10">
+            count is greater then 10.
+        </div>
+        <div v-show='count==10'>
+            count equals to 10.
+        </div>
+        <div v-show='count<10'>
+            count is less then 10.
+        </div>
+    </div>
+    <hr>
+
+    <!-- 动态绑定 v-bind -->
+    <div id="v-bind">
+        <h3 v-bind:class="{'active':isActive}">Try v-bind</h3>
+        <h3 v-bind:class="[isActive ? 'active' : 'notActive']">Try v-bind</h3>
+        <button :disabled='isActive'>button</button>
+        <button @click="color='red'">red</button>
+        <button @click="color='green'">green</button>
+        <button @click="color='yellow'">yellow</button>
+        <div :style="{backgroundColor:color}" class="box"></div>
+    </div>
+    <hr>
+
+    <!-- 事件处理 v-on:click -->
+    <div id="v-on">
+        <h3>{{count}}</h3>
+        <button @click='count++'>add</button>
+        <button v-on:click='count--'>minus</button>
+    </div>
+    <hr>
+
+    <!-- 方法  methods-->
+    <div id="function">
+        <button @click="greet('Hi')">say:Hi</button>
+        <button @click="greet('Hello')">say:Hello</button>
+        {{greeting}}
+        <ul>
+            <li v-for='n in fruits'>{{n}}</li>
+        </ul>
+        <input type="text" v-model='newName'>{{newName}} <br>
+        <button @click='addFruits'>add</button>
+    </div>
+    <hr>
+
+    <!-- 计算属性 computed -->
+    <div id="computed">
+        <label for="">input your name:</label>
+        <input type="text" v-model='name'><br>
+        <div>{{name}} has {{countLength}} characters.</div>
+        <br><br>
+
+        <!-- 过滤器 -->
+        <h3>Filter By Category</h3>
+        <select v-model="category">
+            <option valeu="Accessories">Accessories</option>
+            <option valeu="Laptop">Laptop</option>
+            <option valeu="Stationary">Stationary</option>
+        </select>
+        <ul>
+            <li v-for="product in filterProductsByCategory">Product Name : {{product.name}} - Price : {{product.price}}
+                ({{product.category}})</li>
+        </ul>
+        <h3>Filter By Name</h3>
+        <input type="text" v-model='name'>
+        <ul>
+            <li v-for="product in filterProductsByName">Product Name : {{product.name}} - Price : {{product.price}}
+                ({{product.category}})</li>
+        </ul>
+        <h3>Filter By Price Range</h3>
+        <label for="vol">Price (between 0 and 1000):</label>
+        <input type="range" v-model="range" min="0" max="1000" step="10" />
+        Selected : {{range}}
+        <ul>
+            <li v-for="product in filterProductsByRange">Product Name : {{product.name}} - Price : {{product.price}}
+                ({{product.category}})</li>
+        </ul>
+        <button @click='test'>test</button>
+
+        <h3>Filter</h3>
+        <select v-model="category">
+            <option valeu="Accessories">Accessories</option>
+            <option valeu="Laptop">Laptop</option>
+            <option valeu="Stationary">Stationary</option>
+        </select>
+
+        <input type="text" v-model="name" placeholder="Filter By Name" />
+
+        <label for="vol">Price (between 0 and 1000):</label>
+        <input type="range" v-model="range" min="0" max="1000" step="10" />
+        <ul>
+            <li v-for="product in filterProducts">Product Name : {{product.name}} - Price : {{product.price}}
+                ({{product.category}})</li>
+        </ul>
+        <!-- 排序 -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th @click="sort('name')">Name</th>
+                    <th @click="sort('price')">Price</th>
+                    <th @click="sort('category')">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="product in sortedProducts">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.category}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 计算属性缓存 -->
+        <input type="text" v-model="name" />
+        <input type="text" id="surname" value="Snow" />
+        <button @click="saveSurname"> Save Surname </button><br/><br/>
+        <output>{{computedFullName}}</output>
+    </div>
+
+    <script src="01.js"></script>
+</body>
+
+
+</html>

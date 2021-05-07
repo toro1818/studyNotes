@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <button-click-counter></button-click-counter>
+        <button-click-counter></button-click-counter>
+    </div>
+
+    <div id="app2" :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post 
+        v-for="post in posts" 
+        v-bind:key="post.id" 
+        v-bind:post="post"
+        v-on:enlarge-text="postFontSize += $event"
+        ></blog-post>
+    </div>
+    <script>
+        Vue.component('button-click-counter', {
+            template: '<button class="btn btn-primary" @click="count++">{{count}}</button>',
+
+            data() {
+                return {
+                    count: 0,
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app'
+        });
+
+
+        Vue.component('blog-post', {
+            props: ['post'],
+            template: `
+                <div class="blog-post">
+                    <h3>{{ post.title }}</h3>
+                    <button v-on:click="$emit('enlarge-text',0.1)">
+                        Enlarge text
+                    </button>
+                    <div v-html="post.content"></div>
+                </div>
+            `
+        })
+
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                posts: [
+                    { id: 1, title: 'My journey with Vue', content: '<p>123456</p>' },
+                    { id: 2, title: 'Blogging with Vue' },
+                    { id: 3, title: 'Why Vue is so fun' }
+                ],
+                postFontSize: 1
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<form action="1.php" method="POST">
+    <fieldset>
+        <legend>注册</legend>
+        <label >昵称
+            <input type="text" name="name" required pattern="[A-z]{5,20}"
+            oninvalid="validate('请输入5位字符')" autocomplete="off">
+        </label><br>
+        <label for="邮箱">邮箱</label>
+        <input type="text" id="邮箱" required placeholder="请输入邮箱名"><br>
+        <label >密码
+            <input type="password" placeholder="请输入密码">
+        </label>
+    </fieldset>
+    <button type="submit">提交</button>
+</form>
+<hr>
+<form action="1.php" method="POST" novalidate>
+    <fieldset>
+        <legend>文本框</legend>
+        <input type="text" name="title" required placeholder="请输入标题" maxlength="5" value="" size="100"><br>
+      
+       
+    </fieldset>
+    <fieldset>
+        <legend>自我介绍</legend>
+        <textarea name="介绍" id="介绍" cols="30" rows="10"></textarea>
+    </fieldset>
+    <fieldset>
+        <input type="date" name="date" max="2020-02-13"><br>
+        <input type="week"><br>
+        <input type="month"><br>
+        <input type="datetime-local" name="datetime">
+    </fieldset>
+   
+</form>
+<br>
+<form action="1.php" method="POST" enctype="multipart/form-data">
+    <fieldset>
+        <input type="file" name="icon"multipart="multipart" accept=".jpeg">
+
+    </fieldset>
+    <button>上传</button>
+</form>
+<form action="" method="POST"><mark>lesson</mark>
+    <input type="text" list="lesson">
+    <datalist id="lesson">
+        <option value="PHP"></option>
+        <option value="CSS"></option>
+        <option value="MYSQL"></option>
+    </datalist> 
+</form>

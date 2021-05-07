@@ -1,0 +1,13 @@
+.active {
+    color: pink;
+}
+
+.notActive {
+    color:green;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: var(color);
+}
